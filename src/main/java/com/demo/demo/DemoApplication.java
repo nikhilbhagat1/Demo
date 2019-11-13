@@ -6,7 +6,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
 
 
-@SpringBootApplication(scanBasePackages="com.demo.demo.model")
+@SpringBootApplication(scanBasePackages="com.demo.demo")
 public class DemoApplication {
 
 	public static void main(String[] args) {
