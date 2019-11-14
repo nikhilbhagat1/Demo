@@ -23,6 +23,7 @@ public class Paper {
 
     @ManyToOne
     @JoinColumn(name = "periodical_id", referencedColumnName = "Id", nullable = false, insertable = false, updatable = false)
+    @JsonIgnore
     private Periodical periodical;
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "paper", fetch = FetchType.LAZY, orphanRemoval = true)

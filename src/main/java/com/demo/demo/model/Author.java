@@ -1,6 +1,7 @@
 package com.demo.demo.model;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.hibernate.validator.constraints.NotEmpty;
 
 import javax.persistence.*;
@@ -26,10 +27,12 @@ public class Author {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "book_id", referencedColumnName = "Id", nullable = false, insertable = false, updatable = false)
+    @JsonIgnore
     private Book book;
 
     @ManyToOne
     @JoinColumn(name = "paper_id", referencedColumnName = "Id", nullable = false, insertable = false, updatable = false)
+    @JsonIgnore
     private Paper paper;
 
     public String getId() {
@@ -68,7 +71,15 @@ public class Author {
         return book;
     }
 
+    private boolean sameAsFormer(Book newBook) {
+        return bookId==null? newBook == null : bookId.equals(newBook.getId());
+    }
+
+
     public void setBook(Book book) {
+        //prevent endless loop
+        if (sameAsFormer(book))
+            return ;
         this.book = book;
     }
 

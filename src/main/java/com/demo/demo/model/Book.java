@@ -2,6 +2,7 @@ package com.demo.demo.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
+import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
 import java.util.HashSet;
@@ -11,8 +12,8 @@ import java.util.Set;
 @Table(name="book")
 public class Book {
 
-    @Id
-    @GeneratedValue
+    @Id @GeneratedValue(generator="system-uuid")
+    @GenericGenerator(name="system-uuid", strategy = "uuid")
     private String id;
 
     @Column(name="title")
@@ -34,13 +35,16 @@ public class Book {
     public Book() {
     }
 
-    /*@ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.PERSIST)
+    @ManyToMany(fetch = FetchType.LAZY, cascade = {
+            CascadeType.PERSIST,
+            CascadeType.MERGE
+    })
     @JoinTable(
             name = "book_tag",
             joinColumns = {@JoinColumn(name = "book_id")},
             inverseJoinColumns = {@JoinColumn(name = "tag_id")}
     )
-    private Set<Tag> tags= new HashSet<>();*/
+    private Set<Tag> tags= new HashSet<>();
 
     public String getId() {
         return id;
@@ -86,17 +90,18 @@ public class Book {
         return authors;
     }
 
-    public void setAuthors(Set<Author> authors) {
-        this.authors = authors;
-    }
+   /* public void setAuthors(Set<Author> authors) {
 
-   /* public Set<Tag> getTags() {
+        this.authors = authors;
+    }*/
+
+    public Set<Tag> getTags() {
         return tags;
     }
 
     public void setTags(Set<Tag> tags) {
         this.tags = tags;
-    }*/
+    }
     @Override
     public String toString() {
         return "Book{" +
@@ -106,7 +111,7 @@ public class Book {
                 ", pages=" + pages +
                 ", isbn=" + isbn +
                 ", authors=" + authors +
-                // ", tags=" + tags +
+                ", tags=" + tags +
                 '}';
     }
 
@@ -124,6 +129,6 @@ public class Book {
         this.pages = pages;
         this.isbn = isbn;
         this.authors = authors;
-        //this.tags = tags;
+        this.tags = tags;
     }
 }

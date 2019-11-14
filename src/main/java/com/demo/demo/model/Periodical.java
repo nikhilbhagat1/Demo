@@ -37,7 +37,7 @@ public class Periodical {
             joinColumns = {@JoinColumn(name = "periodical_id")},
             inverseJoinColumns = {@JoinColumn(name = "tag_id")}
     )
-    private Set<Tag> tagSet= new HashSet<>();
+    private Set<Tag> tags= new HashSet<>();
 
 
     public String getId() {
@@ -88,13 +88,13 @@ public class Periodical {
         this.paperSet = paperSet;
     }
 
-    /*public Set<Tag> getTags() {
+    public Set<Tag> getTags() {
         return tags;
     }
 
     public void setTags(Set<Tag> tags) {
         this.tags = tags;
-    }*/
+    }
 
     public Periodical(String id, String title, String year, String volume, String isbn, Set<Paper> paperSet, Set<Tag> tags) {
         this.id = id;
@@ -103,7 +103,7 @@ public class Periodical {
         this.volume = volume;
         this.isbn = isbn;
         this.paperSet = paperSet;
-        //this.tags = tags;
+        this.tags = tags;
     }
 
     public Periodical() {
@@ -118,7 +118,7 @@ public class Periodical {
                 ", volume='" + volume + '\'' +
                 ", isbn='" + isbn + '\'' +
                 ", paperSet=" + paperSet +
-                //", tags=" + tags +
+                ", tags=" + tags +
                 '}';
     }
 }
