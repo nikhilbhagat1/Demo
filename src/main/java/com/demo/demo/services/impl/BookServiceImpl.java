@@ -50,7 +50,7 @@ public class BookServiceImpl implements BookService {
     }
 
 
-    @Transactional(propagation = Propagation.REQUIRES_NEW, isolation = Isolation.REPEATABLE_READ)
+    //@Transactional(propagation = Propagation.REQUIRES_NEW, isolation = Isolation.REPEATABLE_READ)
     public Map<String, Object> getAuthorsByBook(String bookId, Integer pageSize, Integer pageNumber) {
         if (bookId != null){
             return authorRepository.getAuthorsByBook(bookId, pageSize, pageNumber);

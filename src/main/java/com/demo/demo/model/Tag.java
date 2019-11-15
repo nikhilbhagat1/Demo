@@ -1,5 +1,7 @@
 package com.demo.demo.model;
 
+import org.hibernate.annotations.GenericGenerator;
+
 import javax.persistence.*;
 import java.util.HashSet;
 import java.util.Set;
@@ -8,8 +10,8 @@ import java.util.Set;
 @Table(name="tag")
 public class Tag {
 
-    @Id
-    @GeneratedValue
+    @Id @GeneratedValue(generator="system-uuid")
+    @GenericGenerator(name="system-uuid", strategy = "uuid")
     private  String id;
 
     @Column(name="value")

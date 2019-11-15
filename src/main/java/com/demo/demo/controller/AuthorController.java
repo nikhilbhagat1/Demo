@@ -5,6 +5,7 @@ import com.demo.demo.Object.BookDTO;
 import com.demo.demo.model.Author;
 import com.demo.demo.model.Book;
 import com.demo.demo.services.AuthorService;
+import com.google.gson.Gson;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -22,9 +23,14 @@ public class AuthorController {
     @Autowired
     AuthorService authorService;
 
+    @Autowired
+    Gson gson;
 
-    @RequestMapping(value = "/save/atuthor",method = RequestMethod.PUT)
-    public ResponseEntity<String> save(@RequestBody AuthorDTO authorDTO){
+
+    @RequestMapping(value = "/save/author",method = RequestMethod.POST)
+    public ResponseEntity<String> save(@RequestBody String author){
+        AuthorDTO authorDTO;
+        authorDTO = gson.fromJson(author,AuthorDTO.class);
         return  ResponseEntity.ok(authorService.save(authorDTO));
     }
 

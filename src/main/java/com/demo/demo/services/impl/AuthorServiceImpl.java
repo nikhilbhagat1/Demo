@@ -26,7 +26,7 @@ public class AuthorServiceImpl implements AuthorService {
     }
 
 
-    @Transactional(propagation = Propagation.REQUIRED,isolation = Isolation.DEFAULT)
+    @Transactional(propagation = Propagation.REQUIRES_NEW,isolation = Isolation.SERIALIZABLE)
     public String save(AuthorDTO authorDTO){
         Author author =new Author();
         getAuthorEntity(authorDTO,author);

@@ -7,6 +7,8 @@ public class BookDTO {
     private Integer pages;
     private Integer isbn;
 
+    private  AuthorDTO authorDTO;
+
 
     public String getTitle() {
         return title;
@@ -41,6 +43,14 @@ public class BookDTO {
     }
 
 
+    public AuthorDTO getAuthorDTO() {
+        return authorDTO;
+    }
+
+    public void setAuthorDTO(AuthorDTO authorDTO) {
+        this.authorDTO = authorDTO;
+    }
+
     public BookDTO() {
     }
 
@@ -51,6 +61,7 @@ public class BookDTO {
                 ", year='" + year + '\'' +
                 ", pages=" + pages +
                 ", isbn=" + isbn +
+                ", authorDTO=" + authorDTO +
                 '}';
     }
 }
