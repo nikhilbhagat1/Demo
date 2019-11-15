@@ -90,10 +90,10 @@ public class Book {
         return authors;
     }
 
-   /* public void setAuthors(Set<Author> authors) {
+    public void setAuthors(Set<Author> authors) {
 
         this.authors = authors;
-    }*/
+    }
 
     public Set<Tag> getTags() {
         return tags;

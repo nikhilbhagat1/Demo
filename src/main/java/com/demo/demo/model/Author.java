@@ -111,8 +111,8 @@ public class Author {
                 ", name='" + name + '\'' +
                 ", bookId='" + bookId + '\'' +
                 ", paperId='" + paperId + '\'' +
-                ", book=" + book +
-                ", paper=" + paper +
+              /*  ", book=" + book +
+                ", paper=" + paper +*/
                 '}';
     }
 }

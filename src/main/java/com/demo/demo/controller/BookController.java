@@ -2,6 +2,7 @@ package com.demo.demo.controller;
 
 
 import com.demo.demo.Object.BookDTO;
+import com.demo.demo.Util.Constants;
 import com.demo.demo.model.Author;
 import com.demo.demo.model.Book;
 import com.demo.demo.services.BookService;
@@ -48,10 +49,22 @@ public class BookController {
     }
 
 
-
     @RequestMapping(value = "/{bookId}/authors",method = RequestMethod.GET)
     public ResponseEntity<Map<String, Object>> getAuthorsByBoook(@PathVariable String bookId, @RequestParam(name = "pageSize")Integer pageSize, @RequestParam(name="pageNumber")Integer pageNumber){
           return ResponseEntity.ok(bookService.getAuthorsByBook(bookId,pageSize,pageNumber));
+    }
+
+    @RequestMapping(value = "/{bookId}/authors/sortby",method = RequestMethod.GET)
+    public ResponseEntity<Map<String, Object>> getSortedAuthorsByBoook(@PathVariable String bookId, @RequestParam(name = "pageSize")Integer pageSize, @RequestParam(name="pageNumber")Integer pageNumber,@RequestParam(name="sortBy")String sortBy,@RequestParam(name="direction")String direction){
+        return ResponseEntity.ok(bookService.getAuthorsByBook(bookId,pageSize,pageNumber,sortBy,direction));
+    }
+
+
+
+    @RequestMapping(value = "/{bookId}/fifty/authors",method = RequestMethod.GET)
+    public ResponseEntity<Map<String,Object>> getFiftyAuthorsByBook(@PathVariable String bookId,@RequestParam(name="pageNumber")Integer pageNumber){
+
+        return ResponseEntity.ok(bookService.getFiftyAuthorsByBook(bookId, Constants.APIPAGESIZE  ,pageNumber));
     }
 
 

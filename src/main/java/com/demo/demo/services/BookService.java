@@ -12,6 +12,8 @@ public interface BookService {
     public String save(BookDTO book);
     public List<Book> findAll();
     Map<String, Object> getAuthorsByBook(String bookId, Integer pageSize, Integer pageNumber);
+    Map<String, Object> getAuthorsByBook(String bookId, Integer pageSize, Integer pageNumber,String sortBy,String direction);
+    Map<String, Object> getFiftyAuthorsByBook(String bookId, Integer pageSize, Integer pageNumber);
 
 
 }

@@ -1,6 +1,7 @@
 package com.demo.demo.model;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
@@ -28,6 +29,7 @@ public class Periodical {
     private String isbn;
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "periodical", fetch = FetchType.LAZY, orphanRemoval = true)
+    @JsonIgnore
     private Set<Paper> paperSet;
 
     @ManyToMany( fetch = FetchType.LAZY, cascade = {
@@ -39,6 +41,7 @@ public class Periodical {
             joinColumns = {@JoinColumn(name = "periodical_id")},
             inverseJoinColumns = {@JoinColumn(name = "tag_id")}
     )
+    @JsonIgnore
     private Set<Tag> tags= new HashSet<>();
 
 

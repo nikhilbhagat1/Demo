@@ -16,5 +16,6 @@ public interface AuthorRepository { /*JpaRepository<Author, Serializable> {*/
     String save(Author author);
 
     Map<String, Object> getAuthorsByBook(String bookId, Integer pageSize, Integer pageNumber);
+    Map<String, Object> getAuthorsByBook(String bookId, Integer pageSize, Integer pageNumber, String sortBy,String direction);
 
 }

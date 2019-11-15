@@ -13,6 +13,9 @@ public class AuthorDTO {
 
     private String paperId;
 
+    private BookDTO book;
+
+    private PaperDTO paper;
 
     public String getName() {
         return name;
@@ -38,6 +41,21 @@ public class AuthorDTO {
         this.paperId = paperId;
     }
 
+    public BookDTO getBook() {
+        return book;
+    }
+
+    public void setBook(BookDTO book) {
+        this.book = book;
+    }
+
+    public PaperDTO getPaper() {
+        return paper;
+    }
+
+    public void setPaper(PaperDTO paper) {
+        this.paper = paper;
+    }
 
     @Override
     public String toString() {
@@ -45,6 +63,8 @@ public class AuthorDTO {
                 "name='" + name + '\'' +
                 ", bookId='" + bookId + '\'' +
                 ", paperId='" + paperId + '\'' +
+                ", book=" + book +
+                ", paper=" + paper +
                 '}';
     }
 }
